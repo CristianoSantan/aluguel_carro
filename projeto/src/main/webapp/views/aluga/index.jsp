@@ -41,7 +41,7 @@ List<Cliente> clientes = (List<Cliente>) request.getAttribute("clientes");
 	            <div class="collapse navbar-collapse" id="navbarNav">
 	                <ul class="navbar-nav">
 	                    <li class="nav-item">
-	                        <a href="./clientes" class="nav-link text-dark ">
+	                         <a href="./clientes" class="nav-link text-dark ">
 	                            clientes
 	                        </a>
 	                    </li>

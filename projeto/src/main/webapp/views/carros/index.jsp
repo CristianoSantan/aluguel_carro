@@ -2,14 +2,14 @@
 	language="java" 
 	contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="model.Cliente"
+    import="model.Carro"
     import="java.util.List"
 %>
 
 <%
 
 @SuppressWarnings("unchecked")
-List<Cliente> clientes = (List<Cliente>) request.getAttribute("clientes");
+List<Carro> carros = (List<Carro>) request.getAttribute("carros");
 
 %>
 
@@ -17,7 +17,7 @@ List<Cliente> clientes = (List<Cliente>) request.getAttribute("clientes");
 <!doctype html>
 <html lang="pt-br">
   <head>
-    <title>Clientes</title>
+    <title>Carros</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,7 +42,7 @@ List<Cliente> clientes = (List<Cliente>) request.getAttribute("clientes");
 	                <ul class="navbar-nav">
 	                    <li class="nav-item">
 	                        <a href="./clientes" class="nav-link text-dark ">
-	                            clientes
+	                            Clientes
 	                        </a>
 	                    </li>
 	                    <li class="nav-item">
@@ -60,43 +60,44 @@ List<Cliente> clientes = (List<Cliente>) request.getAttribute("clientes");
 	        </div>
 	    </nav>
 	    <header class="tag">
-	        <h1 class="container">Clientes</h1>
+	        <h1 class="container">Carros</h1>
 	    </header>
 	
 	    <div class="container py-3">
-	        <a href="./views/clientes/create.html" class="btn btn-primary mb-2">
-	            Criar cliente
+	        <a href="./views/carros/create.html" class="btn btn-primary mb-2">
+	            Criar carro
 	        </a>
 	        <div class="table-responsive">
 	            <table class="table">
 	                <thead>
 	                    <tr>
 	                        <th>Id</th>
-	                        <th>Nome</th>
-	                        <th>Cidade</th>
-	                        <th>Cpf</th>
+	                        <th>Modelo</th>
+	                        <th>Placa</th>
+	                        <th>Valor aluguel</th>
 	                        <th>Ações</th>
 	                    </tr>
 	                </thead>
 	                <tbody>
-	                
-	                <% for (Cliente c: clientes) { %>
+	   
+	                <% for (Carro c: carros) { %>
 	                    <tr>
 	                        <td><%=c.getId() %></td>
-	                        <td><%=c.getNome() %></td>
-	                        <td><%=c.getCidade() %></td>
-	                        <td><%=c.getCpf() %></td>
+	                        <td><%=c.getModelo() %></td>
+	                        <td><%=c.getPlaca() %></td>
+	                        <td><%=c.getValor() %></td>
 	                        <td class="d-flex">
-	                            <a href="./clientes-edit?id=<%=c.getId() %>" class="btn btn-info">
+	                            <a href="./carros-edit?id=<%=c.getId() %>" class="btn btn-info">
 	                                Editar
 	                            </a>
-	                            <a href="./clientes-delet?id=<%=c.getId() %>" class="btn btn-danger" style="margin-left: 10px;">
+	                            <a href="./carros-delet?id=<%=c.getId() %>" class="btn btn-danger" style="margin-left: 10px;">
 	                                Deletar
 	                            </a>
 	                        </td>
 	                    </tr>
 	                  <% } %>
-	                </tbody>
+	                  
+	                  </tbody>
 	            </table>
 	        </div>
 	    </div>

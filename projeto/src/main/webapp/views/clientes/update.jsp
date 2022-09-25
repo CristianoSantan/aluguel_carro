@@ -7,14 +7,13 @@
 <html lang="pt-br">
 
 <head>
-    <title>Booki | Cadastro autor</title>
+    <title>Atualizar cliente</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS v5.2.0-beta1 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="./css/style.css">
 </head>
@@ -25,8 +24,8 @@
     <div class="main">
         <nav class="navbar navbar-expand-md navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="../../index.html">
-                    Booki
+                <a class="navbar-brand" href="../../index.jsp">
+                    Aluguel Carro
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,18 +34,18 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="../autores/index.html" class="nav-link text-dark ">
-                                Autores
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../editoras/index.html" class="nav-link text-dark">
-                                Editoras
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../livros/index.html" class="nav-link text-dark">
-                                Livros
+                             <a href="./clientes" class="nav-link text-dark ">
+	                            clientes
+	                        </a>
+	                    </li>
+	                    <li class="nav-item">
+	                        <a href="./carros" class="nav-link text-dark">
+	                            Carros
+	                        </a>
+	                    </li>
+	                    <li class="nav-item">
+	                        <a href="./aluga" class="nav-link text-dark">
+	                            Aluguel
                             </a>
                         </li>
                     </ul>
@@ -54,15 +53,21 @@
             </div>
         </nav>
         <header class="tag">
-            <h1 class="container">Cadastrar autor</h1>
+            <h1 class="container">Atualizar cliente</h1>
         </header>
 
         <div class="container py-3">
             <form action="./clientes-update" >
                 <fieldset>
-                    <legend>
-                        <h2 class="text-center">Criar</h2>
+                    <legend>Criar
                     </legend>
+                    <div class="form-group mb-3">
+                        <label for="id" class="form-label">
+                            Id
+                        </label>
+                        <input type="text" id="id" name="id" class="form-control" placeholder="id" 
+                        value="<%=request.getAttribute("id") %>" readonly />
+                    </div>
                     <div class="form-group mb-3">
                         <label for="nome" class="form-label">
                             Nome
@@ -94,15 +99,11 @@
                 </fieldset>
             </form>
         </div>
-
+</div>
 
         <!-- Bootstrap JavaScript Libraries -->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
-            integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
-            integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
-            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>

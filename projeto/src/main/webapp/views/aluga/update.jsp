@@ -1,8 +1,13 @@
+<%@ page language="java" 
+	contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
+%>
+
 <!doctype html>
 <html lang="pt-br">
 
 <head>
-    <title>Booki | Cadastro editora</title>
+    <title>Booki | Cadastro autor</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,7 +16,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
@@ -30,18 +35,18 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="../autores/index.html" class="nav-link text-dark ">
-                                Autores
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../editoras/index.html" class="nav-link text-dark">
-                                Editoras
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../livros/index.html" class="nav-link text-dark">
-                                Livros
+                             <a href="./clientes" class="nav-link text-dark ">
+	                            clientes
+	                        </a>
+	                    </li>
+	                    <li class="nav-item">
+	                        <a href="./carros" class="nav-link text-dark">
+	                            Carros
+	                        </a>
+	                    </li>
+	                    <li class="nav-item">
+	                        <a href="./aluga" class="nav-link text-dark">
+	                            Aluguel
                             </a>
                         </li>
                     </ul>
@@ -49,26 +54,41 @@
             </div>
         </nav>
         <header class="tag">
-            <h1 class="container">Cadastrar editora</h1>
+            <h1 class="container">Cadastrar autor</h1>
         </header>
 
         <div class="container py-3">
-            <form>
+            <form action="./clientes-update" >
                 <fieldset>
                     <legend>
                         <h2 class="text-center">Criar</h2>
                     </legend>
                     <div class="form-group mb-3">
-                        <label htmlFor="Nome" class="form-label">
+                        <label for="nome" class="form-label">
                             Nome
                         </label>
-                        <input type="text" id="Nome" class="form-control" placeholder="Nome" value="" />
+                        <input type="text" id="nome" name="nome" class="form-control" placeholder="nome" 
+                        value="<%=request.getAttribute("nome") %>" />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="cidade" class="form-label">
+                            cidade
+                        </label>
+                        <input type="text" id="cidade" name="cidade" class="form-control" placeholder="cidade" 
+                        value="<%=request.getAttribute("cidade") %>" />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="cpf" class="form-label">
+                            cpf
+                        </label>
+                        <input type="text" id="cpf" name="cpf" class="form-control" placeholder="cpf" 
+                        value="<%=request.getAttribute("cpf") %>" />
                     </div>
 
                     <button type="submit" class="btn btn-primary">
                         Enviar
                     </button>
-                    <a href="./index.html" class="btn btn-danger" style="margin-left: 10px">
+                    <a href="./clientes" class="btn btn-danger" style="margin-left: 10px">
                         Cancelar
                     </a>
                 </fieldset>

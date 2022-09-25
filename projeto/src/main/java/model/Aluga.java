@@ -1,15 +1,15 @@
 package model;
 
 import java.time.LocalDate;
-import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class Aluga {
 	private int id;
 	private LocalDate retirada;
 	private LocalDate devolucao;
 	private double valor_total;
-	private int dias;
+	private long dias;
 	
 	private Cliente cliente;
 	private Carro carro;
@@ -27,8 +27,7 @@ public class Aluga {
 		this.retirada = LocalDate.parse(retirada, formatter);
 		this.devolucao = LocalDate.parse(devolucao, formatter);	
 		// retorna a quantidade de dias entre as datas 
-		Period period = Period.between(this.retirada, this.devolucao);
-		this.dias = period.getDays();  
+		this.dias = ChronoUnit.DAYS.between(this.retirada, this.devolucao);
 		// metodo faz a operação de mutiplicação do valor de aluguel do carro vezes os dias.
 		this.valor_total = setValor_total(carro.getValor());	
 		this.cliente = cliente;
@@ -84,12 +83,12 @@ public class Aluga {
 		this.carro = carro;
 	}
 
-	public int getDias() {
+	public long getDias() {
 		return dias;
 	}
 
-	public void setDias(int dias) {
+	public void setDias(long dias) {
 		this.dias = dias;
-	}	
+	}		
 	
 }

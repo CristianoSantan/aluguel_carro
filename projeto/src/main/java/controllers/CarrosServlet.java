@@ -10,36 +10,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.ClienteDAO;
-import model.Cliente;
+import dao.CarrosDAO;
+import model.Carro;
 
-@WebServlet(urlPatterns = { "/clientes", "/clientes-create", "/clientes-edit", "/clientes-update", "/clientes-delet" })
-public class ClientesServlet extends HttpServlet {
+@WebServlet(urlPatterns = { "/carros", "/carros-create", "/carros-edit", "/carros-update", "/carros-delet" })
+public class CarrosServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	ClienteDAO clienteDAO = new ClienteDAO();
-	Cliente cliente = new Cliente();
+	CarrosDAO carrosDAO = new CarrosDAO();
+	Carro carro = new Carro();
 
-	public ClientesServlet() {
+	public CarrosServlet() {
 		super();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getServletPath();
 		switch (action) {
-		case "/clientes":
+		case "/carros":
 			read(request, response);
 			break;
-		case "/clientes-create":
+		case "/carros-create":
 			create(request, response);
 			break;
-		case "/clientes-edit":
+		case "/carros-edit":
 			edit(request, response);
 			break;
-		case "/clientes-update":
+		case "/carros-update":
 			update(request, response);
 			break;
-		case "/clientes-delet":
+		case "/carros-delet":
 			delet(request, response);
 			break;
 
@@ -52,23 +52,23 @@ public class ClientesServlet extends HttpServlet {
 	// READ
 	protected void read(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		List<Cliente> lista = clienteDAO.getCliente();
+		List<Carro> lista = carrosDAO.getCarros();
 
-		request.setAttribute("clientes", lista);
+		request.setAttribute("carros", lista);
 
-		RequestDispatcher rd = request.getRequestDispatcher("./views/clientes/index.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("./views/carros/index.jsp");
 		rd.forward(request, response);
 	}
 
 	// CREATE
 	protected void create(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		cliente.setNome(request.getParameter("nome"));
-		cliente.setCidade(request.getParameter("cidade"));
-		cliente.setCpf(request.getParameter("cpf"));
+		carro.setModelo(request.getParameter("modelo"));
+		carro.setPlaca(request.getParameter("placa"));
+		carro.setValor(Double.parseDouble(request.getParameter("valor")));
 
-		clienteDAO.save(cliente);
-		response.sendRedirect("clientes");
+		carrosDAO.save(carro);
+		response.sendRedirect("carros");
 
 	}
 
@@ -76,35 +76,35 @@ public class ClientesServlet extends HttpServlet {
 	protected void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 
-		cliente = clienteDAO.getClienteById(id);
+		carro = carrosDAO.getCarroById(id);
 
-		request.setAttribute("id", cliente.getId());
-		request.setAttribute("nome", cliente.getNome());
-		request.setAttribute("cidade", cliente.getCidade());
-		request.setAttribute("cpf", cliente.getCpf());
+		request.setAttribute("id", carro.getId());
+		request.setAttribute("modelo", carro.getModelo());
+		request.setAttribute("placa", carro.getPlaca());
+		request.setAttribute("valor", carro.getValor());
 
-		RequestDispatcher rd = request.getRequestDispatcher("./views/clientes/update.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("./views/carros/update.jsp");
 		rd.forward(request, response);
 
 	}
 
 	// UPDATE
 	protected void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		cliente.setId(Integer.parseInt(request.getParameter("id")));
-		cliente.setNome(request.getParameter("nome"));
-		cliente.setCidade(request.getParameter("cidade"));
-		cliente.setCpf(request.getParameter("cpf"));
+		carro.setId(Integer.parseInt(request.getParameter("id")));
+		carro.setModelo(request.getParameter("modelo"));
+		carro.setPlaca(request.getParameter("placa"));
+		carro.setValor(Double.parseDouble(request.getParameter("valor")));
 
-		clienteDAO.update(cliente);
-		response.sendRedirect("clientes");
+		carrosDAO.update(carro);
+		response.sendRedirect("carros");
 	}
 
 	// DELET
 	protected void delet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 
-		clienteDAO.deleteById(id);
-		response.sendRedirect("clientes");
+		carrosDAO.deleteById(id);
+		response.sendRedirect("carros");
 	}
 
 }
