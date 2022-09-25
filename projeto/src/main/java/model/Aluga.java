@@ -21,15 +21,14 @@ public class Aluga {
 		super();
 	}
 
-	public Aluga(int id, String retirada, String devolucao, Cliente cliente, Carro carro) {
+	public Aluga(String retirada, String devolucao, Cliente cliente, Carro carro) {
 		super();
-		this.id = id;
 		this.retirada = LocalDate.parse(retirada, formatter);
 		this.devolucao = LocalDate.parse(devolucao, formatter);	
 		// retorna a quantidade de dias entre as datas 
-		this.dias = ChronoUnit.DAYS.between(this.retirada, this.devolucao);
+		this.dias = setPeriodo(this.retirada, this.devolucao);
 		// metodo faz a operação de mutiplicação do valor de aluguel do carro vezes os dias.
-		this.valor_total = setValor_total(carro.getValor());	
+		this.valor_total = setValor_dias(carro.getValor());	
 		this.cliente = cliente;
 		this.carro = carro;
 	}
@@ -62,7 +61,11 @@ public class Aluga {
 		return valor_total;
 	}
 
-	public double setValor_total(double valor_total) {
+	public void setValor_total(double valor_total) {
+		this.valor_total = valor_total;
+	}
+	
+	public double setValor_dias(double valor_total) {
 		this.valor_total = valor_total * dias;
 		return this.valor_total;
 	}
@@ -90,5 +93,10 @@ public class Aluga {
 	public void setDias(long dias) {
 		this.dias = dias;
 	}		
+	
+	public long setPeriodo(LocalDate retirada, LocalDate devolucao) {
+		this.dias =  ChronoUnit.DAYS.between(this.retirada, this.devolucao);
+		return this.dias;
+	}	
 	
 }
