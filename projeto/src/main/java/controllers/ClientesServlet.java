@@ -52,13 +52,22 @@ public class ClientesServlet extends HttpServlet {
 	// READ
 	protected void read(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		List<Cliente> lista = clienteDAO.getCliente();
-
+		List<Cliente> lista;
+		
+		String filtro = request.getParameter("filtro");
+		String busca = request.getParameter("busca");
+		
+		if ((filtro == null || busca == null) || filtro.equals("DEFAULT")) {
+			 lista = clienteDAO.getCliente();
+		} else {
+			lista = clienteDAO.getFiltro(filtro, busca);
+		}
 		request.setAttribute("clientes", lista);
 
 		RequestDispatcher rd = request.getRequestDispatcher("./views/clientes/index.jsp");
 		rd.forward(request, response);
 	}
+
 
 	// CREATE
 	protected void create(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

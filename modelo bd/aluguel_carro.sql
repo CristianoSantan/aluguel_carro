@@ -36,6 +36,10 @@ insert into carro (modelo_carro, placa_carro, valor_aluguel_carro) values
 ('compass', 'lkj1234', 25),
 ('ka', 'poi4321', 12);
 
+insert into carro (id_carro, modelo_carro, placa_carro, valor_aluguel_carro) values 
+(default, 'corola', 'lkj1234', 25),
+(default, 'civic', 'poi4321', 12);
+
 insert into aluga (data_retirada, data_devolucao, valor_aluguel, dias_aluguel, id_cliente, id_carro) values 
 ('2022-09-10','2022-09-15', 75, 5, 1, 2),
 ('2022-09-14','2022-09-15', 50, 1, 2, 1);
@@ -57,7 +61,29 @@ select * from cliente;
 select * from carro;
 select * from aluga;
 select * from aluga_cliente_carro;
+select * from teste;
 
-select * from cliente where cidade_cliente = 'Campinas';
+select * from cliente where cidade_cliente like '%a%';
+
+alter table carro add teste varchar(10);
+
+alter table carro modify teste int;
+
+alter table carro drop column teste2;
+
+alter table carro change teste teste2 varchar(15);
+
+create view teste as
+select 
+id_aluguel,
+data_retirada,
+data_devolucao,
+valor_aluguel,
+dias_aluguel,
+ca.*,
+(ca.valor_aluguel_carro * a.dias_aluguel) as total
+from aluga a, cliente c, carro ca 
+where a.id_cliente = c.id_cliente and a.id_carro = ca.id_carro
+order by id_aluguel asc;
 
 

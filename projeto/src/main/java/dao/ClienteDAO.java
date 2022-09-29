@@ -214,5 +214,57 @@ public class ClienteDAO {
 
 		return cliente;
 	}
+	
+	public List<Cliente> getFiltro(String coluna, String busca) {
+		
+		String sql = "select * from cliente where " + coluna + " like '%" + busca + "%';";
+
+		List<Cliente> clientes = new ArrayList<Cliente>();
+
+		ResultSet rset = null;
+
+		try {
+			conn = ConnectionMySQL.createConnectionMySQL();
+
+			pstm = conn.prepareStatement(sql);
+
+			//pstm.setString(1, coluna);
+			//pstm.setString(2, busca);
+
+			rset = pstm.executeQuery();
+
+			while (rset.next()) {
+				Cliente cliente = new Cliente();
+
+				cliente.setId(rset.getInt("id_cliente"));
+
+				cliente.setNome(rset.getString("nome_cliente"));
+				
+				cliente.setCidade(rset.getString("cidade_cliente"));
+				
+				cliente.setCpf(rset.getString("cpf_cliente"));
+
+				clientes.add(cliente);
+
+			}
+			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstm != null) {
+					pstm.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return clientes;
+	}
 
 }

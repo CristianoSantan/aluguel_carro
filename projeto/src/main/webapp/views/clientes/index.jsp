@@ -67,6 +67,31 @@ List<Cliente> clientes = (List<Cliente>) request.getAttribute("clientes");
 	        <a href="./views/clientes/create.html" class="btn btn-primary mb-2">
 	            Criar cliente
 	        </a>
+	        
+	         <form action="./clientes">
+		            <div class="form-group mt-3">
+		                <select id="filtro" name="filtro" class="form-select">
+		                    <option value="DEFAULT">Filtrar por</option>
+		                    <option value="nome_cliente">
+		                        nome
+		                    </option>
+		                    <option value="cidade_cliente">
+		                        cidade
+		                    </option>
+		                    <option value="cpf_cliente">
+		                        cpf
+		                    </option>
+		                </select>
+		            </div>
+		            <div class="form-group mt-3">
+		                <input type="text" id="busca" name="busca" class="form-control" placeholder="Digite aqui..." />
+		            </div>
+		            <button type="submit" class="btn btn-primary mb-5">
+                    	Buscar
+                	</button>
+	            </form>
+	        
+	        
 	        <div class="table-responsive">
 	            <table class="table">
 	                <thead>

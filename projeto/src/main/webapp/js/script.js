@@ -1,3 +1,14 @@
+const cpf = document.getElementById('cpf')
+		
+cpf.onclick = () => {
+	let cpfLength = cpf.value.length
+	
+	if (cpfLength === 3) {
+		cpf.value += "."
+	}}
+		
+
+
 searchForm = document.querySelector('.search-form');
 
 document.querySelector('#search-btn').onclick = () =>{
